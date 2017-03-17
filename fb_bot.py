@@ -38,6 +38,9 @@ class FbBot():
             self.driver.quit()
         else:
             print("Login Successful")
+
+        self.wish_birthday()
+        time.sleep(5)
         self.thanks_like()
 
     def automate_status(self, URL):
@@ -117,6 +120,32 @@ class FbBot():
 
         else:
             print("Error")
+
+    def wish_birthday(self):
+        self.driver.get("https://www.facebook.com/events/birthdays")
+
+        s = self.driver.find_elements_by_name('message')
+        print(len(s))
+        for i in range(len(s)):
+            try:
+                wish = self.driver.find_element_by_name('message')
+                time.sleep(3)
+                wish.send_keys("Boom! Happy Birthday!")
+                time.sleep(3)
+                wish.send_keys(Keys.ENTER)
+                time.sleep(5)
+            except:
+                pass
+
+            try:
+                wish = self.driver.find_element_by_name('message_text')
+                time.sleep(3)
+                wish.send_keys("Boom! Happy Birthday!")
+                time.sleep(3)
+                wish.send_keys(Keys.ENTER)
+                time.sleep(5)
+            except:
+                pass
 
 
 def main():
