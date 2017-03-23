@@ -5,6 +5,8 @@ Python Facebook Bot
 ========================
 Developed by: Chirag Rathod (Srce Cde)
 Email: chiragr83@gmail.com
+
+Github repo: https://github.com/srcecde/facebook-bot/
 ========================
 """
 
@@ -19,7 +21,6 @@ import time
 # Uncomment this for invisible browser
 # display = Display(visible=0)
 # display.start()
-
 
 class FbBot():
 
@@ -72,13 +73,13 @@ class FbBot():
                 time.sleep(2)
                 get_like_bt[i].click()
                 if get_like_bt:
-                    print("Done")
+                    print("The page at ", URL, " has been liked")
                 else:
-                    print("Not done")
+                    print("There was an error liking the page at ", URL)
 
                 time.sleep(3)
             else:
-                print("Already Liked")
+                print("The page at ", URL, " is already liked")
             time.sleep(1800)
 
     def thanks_like(self):
@@ -158,7 +159,7 @@ def main():
     args = parser.parse_args()
 
     if not args.a:
-        exit("Please specify status or likes to automate using --a=parameter(status/likes)")
+        exit("Please specify status or likes to automate using --a=parameter (status/likes)")
     if not args.u:
         exit("Please specify FB username using --u=parameter")
     if not args.p:
@@ -186,13 +187,13 @@ def main():
                 url = "https://www.facebook.com/"
                 f.automate_likes(url)
 
-        print("Thanks for using!!!")
+        print("Thanks for using facebook-bot!")
 
     except KeyboardInterrupt:
         exit("User Aborted")
 
     except:
-        exit("Invalid parameter\nIt should be status or likes")
+        exit("Invalid parameter\nThe correct parameters are 'status' or 'likes'")
 
 if __name__ == "__main__":
     main()
